@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="UkayJake-inspired preloved marketplace demo.">
+  <title>UkayJake | Preloved Marketplace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="#home" class="brand" aria-label="UkayJake home">Ukay<span>Jake</span></a>
+    <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="desktop-nav" id="desktopNav">
+      <button class="nav-link active" data-page="home">Home</button>
+      <button class="nav-link" data-page="browse">Browse</button>
+      <button class="nav-link" data-page="sell">Sell</button>
+      <button class="nav-link" data-page="inbox">Inbox</button>
+      <button class="nav-link" data-page="profile">Profile</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page active" id="home">
+      <div class="hero">
+        <div class="product-strip" aria-label="Featured preloved items">
+          <img src="https://placehold.co/170x220/e3dfd2/314033?text=Vest" alt="Preloved vest">
+          <img src="https://placehold.co/170x220/d6d9d2/314033?text=Tech" alt="Preloved electronics">
+          <img src="https://placehold.co/170x220/d8c9ba/314033?text=Bag" alt="Preloved bag">
+        </div>
+        <p class="hero-brand">Ukay<span>Jake</span></p>
+        <h1>Join and sell preloved items<br class="desktop-break"> with no fee</h1>
+        <p class="hero-copy">The peer-to-peer marketplace for preloved<br class="desktop-break"> Filipino fashion.</p>
+        <div class="hero-actions">
+          <button class="primary-button" data-page="profile">Sign up for UkayJake</button>
+          <button class="secondary-button" data-page="profile">I already have an account</button>
+        </div>
+        <p class="small-link">About UkayJake: <a href="#about" data-page="about">Our platform</a></p>
+        <p class="small-link">Just looking? <a href="#browse" data-page="browse">Browse the marketplace</a></p>
+      </div>
+      <section class="featured-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">PRELOVED, RELOVED</p><h2>Fresh finds</h2></div>
+          <button class="text-button" data-page="browse">Browse all ↗</button>
+        </div>
+        <div class="listing-grid" id="featuredGrid"></div>
+      </section>
+    </section>
+
+    <section class="page" id="browse">
+      <div class="browse-header">
+        <p class="eyebrow">DISCOVER SOMETHING GOOD</p>
+        <h1>Browse</h1>
+        <p class="muted">Find something that deserves a second life.</p>
+      </div>
+      <div class="category-grid" id="categoryGrid"></div>
+      <div class="marketplace">
+        <div class="section-heading">
+          <div><p class="eyebrow">THE MARKETPLACE</p><h2>Latest listings</h2></div>
+          <span class="result-count" id="resultCount"></span>
+        </div>
+        <div class="search-tools">
+          <input id="searchInput" type="search" placeholder="Search items..." aria-label="Search items">
+          <select id="sortSelect" aria-label="Sort products">
+            <option value="newest">Newest first</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+          </select>
+        </div>
+        <div class="listing-grid" id="productGrid"></div>
+        <p class="empty-message" id="emptyMessage" hidden>No listings found. Try another search.</p>
+      </div>
+    </section>
+
+    <section class="page simple-page" id="sell">
+      <div class="simple-card">
+        <div class="round-icon">＋</div>
+        <p class="eyebrow">GIVE YOUR ITEMS A NEW HOME</p>
+        <h1>Sell on UkayJake</h1>
+        <p class="muted">List preloved items and connect with people who will love them.</p>
+        <form id="sellForm">
+          <label>Item name<input id="itemName" required maxlength="70" placeholder="e.g. Vintage denim jacket"></label>
+          <label>Price (₱)<input id="itemPrice" required type="number" min="1" max="1000000" placeholder="250"></label>
+          <label>Category
+            <select id="itemCategory">
+              <option>Tops</option><option>Men</option><option>Women</option>
+              <option>Designer</option><option>Kids</option><option>Home</option>
+              <option>Electronics</option><option>Pants</option><option>Jackets</option>
+              <option>Accessories</option><option>Books & Media</option><option>Watches</option>
+              <option>Sports</option><option>Tools & Others</option>
+            </select>
+          </label>
+          <label>Image URL (optional)<input id="itemImage" type="url" placeholder="https://example.com/photo.jpg"></label>
+          <button class="primary-button" type="submit">Add demo listing</button>
+        </form>
+        <p class="form-note">Demo only: listings are stored in this browser session, not uploaded to a real marketplace.</p>
+      </div>
+    </section>
+
+    <section class="page simple-page" id="inbox">
+      <div class="simple-card">
+        <div class="round-icon">♡</div>
+        <p class="eyebrow">MESSAGES</p>
+        <h1>Your inbox</h1>
+        <p class="muted">Your buyer and seller conversations will appear here once messaging is connected.</p>
+      </div>
+    </section>
+
+    <section class="page simple-page" id="profile">
+      <div class="simple-card">
+        <div class="round-icon">♙</div>
+        <p class="eyebrow">WELCOME TO UKAYJAKE</p>
+        <h1>Your profile</h1>
+        <p class="muted">Create an account to save items and manage your listings.</p>
+        <form id="profileForm">
+          <label>Your name<input required id="profileName" placeholder="Enter your name"></label>
+          <label>Email address<input required id="profileEmail" type="email" placeholder="you@example.com"></label>
+          <button class="primary-button" type="submit">Continue</button>
+        </form>
+        <p class="form-note">This is a front-end demo. It does not create a real account.</p>
+      </div>
+    </section>
+
+    <section class="page simple-page" id="about">
+      <div class="simple-card">
+        <p class="eyebrow">OUR PLATFORM</p>
+        <h1>Preloved finds, new stories.</h1>
+        <p class="muted">UkayJake is recreated here as a learning project inspired by the screenshots you shared. This demo shows a marketplace interface using plain HTML, CSS, and JavaScript.</p>
+        <button class="primary-button" data-page="browse">Explore listings</button>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button class="bottom-link active" data-page="home"><span class="bottom-icon">⌂</span><span>Home</span></button>
+    <button class="bottom-link" data-page="browse"><span class="bottom-icon grid-symbol">▦</span><span>Browse</span></button>
+    <button class="bottom-link sell-tab" data-page="sell"><span class="sell-circle">＋</span><span>Sell</span></button>
+    <button class="bottom-link" data-page="inbox"><span class="bottom-icon">▢</span><span>Inbox</span></button>
+    <button class="bottom-link" data-page="profile"><span class="bottom-icon">♙</span><span>Profile</span></button>
+  </nav>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
